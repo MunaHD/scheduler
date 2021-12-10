@@ -11,9 +11,10 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {}
+    appointments: {},
+    interviewers: {}
   })
-
+  
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   
   useEffect(() => {
@@ -31,7 +32,15 @@ export default function Application(props) {
   }, []);
   
   //setDays(response.data)
-  const appointmentList = dailyAppointments.map((app) => <Appointment key={app.id} {...app}/> )
+  const schedule = dailyAppointments.map((app) => {
+    const interview = getInterview(state, app.interview)
+    return (
+      <Appointment
+        key={app.id}
+        {...app}
+        interview={interview} //might not work
+      />)
+  } )
 
   return (
     <main className="layout">
@@ -56,9 +65,10 @@ export default function Application(props) {
       />
       </section>
       <section className="schedule">
-        {appointmentList}
+        {schedule}
         <Appointment key="last" time="5pm" />
       </section>
     </main>
   );
 }
+
