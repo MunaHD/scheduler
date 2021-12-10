@@ -51,6 +51,9 @@ export default function Application(props) {
     days: [],
     //appointments: {}
   })
+  const setDay = day => setState({ ...state, day });
+  
+  const setDays = days => setState(prev => ({ ...prev, days }));
   
   const appointmentList = appointments.map((app) => <Appointment key={app.id} {...app}/> )
   
@@ -61,9 +64,6 @@ export default function Application(props) {
     });
   }, []);
   
-  const setDay = day => setState({ ...state, day });
-  
-  const setDays = days => setState(prev => ({ ...prev, days }));
 
   return (
     <main className="layout">
@@ -78,7 +78,7 @@ export default function Application(props) {
       <DayList
         days={state.days}
         value={state.day}
-        setDay={setDay}
+        onChange={setDay}
       />
       </nav>
       <img
