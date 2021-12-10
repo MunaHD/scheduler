@@ -3,46 +3,7 @@ import axios from "axios";
 import DayList from './DayList';
 import "components/Application.scss";
 import Appointment from "components/Appointment"
-
-const appointments = [
-  {
-    id: 1,
-    time: "12pm",
-  },
-  {
-    id: 2,
-    time: "1pm",
-    interview: {
-      student: "Lydia Miller-Jones",
-      interviewer:{
-        id: 3,
-        name: "Sylvia Palmer",
-        avatar: "https://i.imgur.com/LpaY82x.png",
-      }
-    }
-  },
-  {
-    id: 3,
-    time: "2pm",
-  },
-  {
-    id: 4,
-    time: "3pm",
-    interview: {
-      student: "Archie Andrews",
-      interviewer:{
-        id: 4,
-        name: "Cohana Roy",
-        avatar: "https://i.imgur.com/FK8V841.jpg",
-      }
-    }
-  },
-  {
-    id: 5,
-    time: "4pm",
-  }
-];
-
+import { getAppointmentsForDay } from "helpers/selectors"
 
 export default function Application(props) {
   const setDay = day => setState({ ...state, day });
@@ -50,26 +11,25 @@ export default function Application(props) {
   const [state, setState] = useState({
     day: "Monday",
     days: [],
-    appointments: {appointments},
-    
+    appointments: {}
   })
 
-  const dailyAppointments = [];
+  const dailyAppointments = getAppointmentsForDay(state, state.day);
   
   useEffect(() => {
-    const daysURL = 'http://localhost:8001/api/days';
-    const appointmentURL = 'http://localhost:8001/api/appointments';
-    //const interviewersURL = ' /api/interviewers';
+    const daysURL = 'api/days';
+    const appointmentURL = 'api/appointments';
+    const interviewersURL = '/api/interviewers';
     Promise.all([
       axios.get(daysURL),
-      axios.get(appointmentURL)
-      //axios.get(interviewersURL)
+      axios.get(appointmentURL),
+      axios.get(interviewersURL)
     ]).then(all => {
-      setState(prev => ({ ...prev, days:all[0].data, appointments: all[1].data }))
+      setState(prev => ({ ...prev, days:all[0].data, appointments: all[1].data, interviewers: all[2].data }))
     })
       
   }, []);
-  //, interviewers: all[2].data
+  
   //setDays(response.data)
   const appointmentList = dailyAppointments.map((app) => <Appointment key={app.id} {...app}/> )
 
