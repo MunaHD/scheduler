@@ -26,7 +26,8 @@ export default function Application(props) {
       axios.get(appointmentURL),
       axios.get(interviewersURL)
     ]).then(all => {
-      setState(prev => ({ ...prev, days:all[0].data, appointments: all[1].data, interviewers: all[2].data }))
+      const [ first, second, third] = all
+      setState(prev => ({ ...prev, days:first.data, appointments:second.data, interviewers:third.data }))
     })
       
   }, []);
