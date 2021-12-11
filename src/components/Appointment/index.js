@@ -11,8 +11,7 @@ const SHOW = "SHOW";
 const CREATE= "CREATE";
 
 export default function Appointment(props) {
-  console.log(props);
-  const { time, interview } = props
+  const { time, interview } = props //props return time
 
   const { mode, transition, back } = useVisualMode(
     interview ? SHOW : EMPTY
