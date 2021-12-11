@@ -3,7 +3,9 @@ import { useState } from 'react';
 export default function useVisualMode(initial) {
   const [mode, setMode] = useState(initial);
   const [history, setHistory] = useState([initial]);
-  //console.log("history", history)
+  
+  //TODO: add prev to setHostory()
+
   function transition(newMode, replace  = false) {
     if (replace === true) {
       history.pop()
