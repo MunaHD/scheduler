@@ -14,13 +14,12 @@ export default function useVisualMode(initial) {
     setMode(newMode)
   }
   function back() {
-    //only when there is a mode aside form the original
     if (history.length > 1) {
       //make a copy of history becuase the original needs to be
       // intact to next use of transition function
       const historyCopy = history.slice(0, -1);
       setHistory(historyCopy);
-      
+
       //the current mode is the last element of the copied history array (the second last of the original)
       setMode(historyCopy[historyCopy.length - 1])
     }
