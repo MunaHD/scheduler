@@ -23,7 +23,7 @@ export default function useVisualMode(initial) {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    //console.log("app",appointment)
+    
     const appointments = {
       ...state.appointments,
       [id]: appointment
