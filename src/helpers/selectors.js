@@ -5,10 +5,10 @@ export function getAppointmentsForDay(state, day) {
     const { appointments } = filteredDays
     //get the apointments that match the given day
     const filteredappointments = appointments.map(i => state.appointments[i])
-    return filteredappointments; 
+    
+    return filteredappointments;
   } 
-  return []
-  
+  return [] 
 }
 
 export function getInterview(state, interview) {
@@ -22,7 +22,6 @@ export function getInterview(state, interview) {
    }
   return interviewInfo
 }
-
 return null
 
 }

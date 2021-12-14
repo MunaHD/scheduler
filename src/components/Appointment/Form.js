@@ -3,7 +3,7 @@ import Button from "components/Button";
 import InterviewerList from "components/InterviewerList";
 
 export default function Form(props) {
-  console.log(props)
+  
   const {
     interviewers,
     onSave,
@@ -12,7 +12,7 @@ export default function Form(props) {
   
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  console.log("id",interviewer)
+  
   const reset = () => {
     setStudent("");
     setInterviewer(null);
