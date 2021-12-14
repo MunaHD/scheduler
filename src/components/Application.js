@@ -65,7 +65,7 @@ export default function Application(props) {
       
   }, []);
   
-  const interviewers = getInterviewersForDay(state, state.day);
+  const getInterviewers = getInterviewersForDay(state, state.day);
   
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   
@@ -77,7 +77,7 @@ export default function Application(props) {
         key={app.id}
         {...app}
         interview={interview}
-        interviewers={interviewers}
+        interviewers={getInterviewers}
         bookInterview={bookInterview}
         deleteInterview={deleteInterview}
       />)

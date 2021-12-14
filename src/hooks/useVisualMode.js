@@ -7,10 +7,10 @@ export default function useVisualMode(initial) {
   function transition(newMode, replace  = false) {
     if (replace === true) {
       //replacing the pop. So it berings back everything except the last element
-      setHistory(prev => [...prev].slice(0, -1));
+      setHistory(prev => ([...prev].slice(0, -1)));
     }
     // set the history to everything in its prvious state and add newMode
-    setHistory(prev => [...prev, newMode]);
+    setHistory(prev => ([...prev, newMode]));
     setMode(newMode)
   }
   function back() {
