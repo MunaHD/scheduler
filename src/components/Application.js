@@ -33,7 +33,22 @@ export default function Application(props) {
     // console.log(id, interview);
   }
   
-  
+  function deleteInterview(id) {
+
+    const appointment = {
+      ...state.appointments[id],
+      interview: null
+    };
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment
+    };
+    
+    return axios.delete(`/api/appointments/${id}`)
+      .then(() => {
+      setState({...state, appointments }) 
+    })
+  }
   
   useEffect(() => {
     const daysURL = 'api/days';
@@ -51,6 +66,7 @@ export default function Application(props) {
   }, []);
   
   const interviewers = getInterviewersForDay(state, state.day);
+  
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   
   const schedule = dailyAppointments.map((app) => {
@@ -63,6 +79,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        deleteInterview={deleteInterview}
       />)
   } )
 

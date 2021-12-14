@@ -7,12 +7,12 @@ export default function Form(props) {
   const {
     interviewers,
     onSave,
-    onCancel,
+    onCancel
   } = props
   
   const [student, setStudent] = useState(props.student || "");
   const [interviewer, setInterviewer] = useState(props.interviewer || null);
-  
+  console.log("id",interviewer)
   const reset = () => {
     setStudent("");
     setInterviewer(null);
