@@ -14,11 +14,24 @@ export default function useVisualMode(initial) {
     appointments: {},
     interviewers: {}
   });
-
-   console.log("state.days", state.days)
+  function updateSpots(id, isDeleting) {
+    let days = [...state.days];
+    let dayToChange = days.find(day => day.appointments.includes(id));
+    // get the day to update index
+    let indexToUpdate = days.indexOf(dayToChange);
+    // depending on the boolean, it will either increment or decrement
+    if (isDeleting) {
+      dayToChange.spots += 1;
+    } else {
+      dayToChange.spots -= 1;
+    }
+    days[indexToUpdate] = dayToChange;
+    return days
+  }
   
-
+  
   function bookInterview(id, interview) {
+    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
@@ -31,18 +44,12 @@ export default function useVisualMode(initial) {
      
    
     return axios.put(`/api/appointments/${id}`, {interview})
-    .then(() => {
-      setState({ ...state, appointments })
-      let days = [ ...state.days ];
-      // get the day to update
-      let dayToUpdate = days.find(day => day.appointments.includes(id));
-      // get the day to update's index
-      let indexToUpdate = days.indexOf(dayToUpdate);
-      // depending on the type, it will either increment, decrement, or do nothing.
-      dayToUpdate.spots -= 1;
-      
-      days[indexToUpdate] = dayToUpdate;
-      return days;
+      .then(() => {
+         //days variable holds the new days array with spot incremented
+        let days = updateSpots(id, false)
+        setState({ ...state, appointments, days })
+        
+
     })
     
     
@@ -59,17 +66,9 @@ export default function useVisualMode(initial) {
     }; 
     return axios.delete(`/api/appointments/${id}`)
       .then(() => {
-        setState({ ...state, appointments })
-        let days = [ ...state.days ];
-        // get the day to update
-        let dayToUpdate = days.find(day => day.appointments.includes(id));
-        // get the day to update's index
-        let indexToUpdate = days.indexOf(dayToUpdate);
-        // depending on the type, it will either increment, decrement, or do nothing.
-        dayToUpdate.spots += 1;
-        
-        days[indexToUpdate] = dayToUpdate;
-        return days;
+        //days variable holds the new days array with spot decremented
+        let days = updateSpots(id, true)
+        setState({ ...state, appointments, days})
       })
   }
   

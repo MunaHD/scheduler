@@ -55,7 +55,8 @@ export default function Appointment(props) {
   return (
     <article className="appointment">
       <Header time={time} />
-      {mode === EMPTY &&  <Empty onAdd={() => transition(CREATE)} />}
+      {mode === EMPTY && <Empty onAdd={() => transition(CREATE)} />}
+      
       {mode === SHOW && (
         <Show
         student={interview.student}
@@ -63,46 +64,54 @@ export default function Appointment(props) {
         onDelete={() => transition(CONFIRM)}
         onEdit={() => transition(EDIT)} />
       )}
+
       {mode === CREATE && (
         <Form
         interviewers={interviewers}
         onCancel={() => back()}
         onSave={save} />
       )}
+
       {mode === EDIT && (
         <Form
         interviewers={interviewers}
         student={interview.student}
-        interviewer={props.interview.interviewer ? props.interview.interviewer.id : null}
+        interviewer={props.interview.interviewer.id}
         onCancel={() => back()}
         onSave={save} />
-        )}
+      )}
+      
       {mode === ERROR_DELETE && (
         <Error
-        
-        onClose={() => back()} />
-        )}
+          message="could not cancel appointment."
+          onClose={() => back()} />
+      )}
+      
       {mode === ERROR_SAVE && (
         <Error
-        
+        message="could not save appointment."
         onClose={() => back()} />
-        )}
-        {mode === CONFIRM && (
-          <Confirm
-          onCancel={() => back()}
-          onConfirm={deleteAppointment} />
-        )}
-        {mode === SAVING && (
-          <Status
-          message={SAVING} />
-        )}
-        {mode === DELETING && (
-          <Status
-          message={DELETING} />
-        )}
+      )}
+    
+      {mode === CONFIRM && (
+        <Confirm
+        onCancel={() => back()}
+        onConfirm={deleteAppointment} />
+      )}
+    
+      {mode === SAVING && (
+        <Status
+        message={SAVING} />
+      )}
+    
+      {mode === DELETING && (
+        <Status
+        message={DELETING} />
+      )}
     </article>
   
   )
 }
 
 
+// ? props.interview.interviewer.id : null
