@@ -12,11 +12,15 @@ export default function Application(props) {
     bookInterview,
     deleteInterview
   } = useApplicationData()
-
+  
+  // get the helper function to select the interviewers for specific day 
   const getInterviewers = getInterviewersForDay(state, state.day);
+  // get the helper function to select the appointments for specific day 
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   
+  // retireve the relevant information and pass to the appointment component
   const schedule = dailyAppointments.map((app) => {
+    // get the specific interview for the day
     const interview = getInterview(state, app.interview)
 
     return (

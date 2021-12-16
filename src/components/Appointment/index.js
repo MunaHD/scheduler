@@ -30,13 +30,19 @@ export default function Appointment(props) {
   } = props
   const { mode, transition, back } = useVisualMode( interview ? SHOW : EMPTY );
   
+  
   function save(name, interviewer) {
+    //set the interview with the student name and the interviewer that is passed to the function
     const interview = {
       student: name,
       interviewer
     };
+    //transition to show the saving status
     transition(SAVING);
-
+    
+    // pass the interview we made and the id to the function 
+    //- then transition to show the saved appointment
+    // if it fails we show the error message
     bookInterview(id, interview)
     .then(() => {
       transition(SHOW);
@@ -47,8 +53,11 @@ export default function Appointment(props) {
   }
 
   function deleteAppointment() {
+    //show the deleting status
     transition(DELETING, true);
-
+    //delete the appointment at the specified id
+    //- then show the empty appointment slot
+    // if it fails then we show the error message
     deleteInterview(id)
     .then(() => {
       transition(EMPTY);
