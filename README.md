@@ -7,12 +7,12 @@ This is a SPA hat was built using the React Javascript library. This application
 ### Landing Page
 
 The page displays individual days with 5 slots to book appointments.
-!["Screenshot description"](URL)
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Opening%20Display.png?raw=true)
 
 ### Create an Appointment
 
 The form to create/ edit an appointment.
-!["Screenshot description"](URL)
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Create:Edit%20Form.png?raw=true)
 
 ### Warnings
 
@@ -22,21 +22,21 @@ Shows an error if the user leaves the name feild empty.
 ### Confirmation on Delete
 
 warning to user when deleting.
-!["Screenshot description"](URL)
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Confirm%20Delete.png?raw=true)
 
 ### Error Handling
 
 Error displayed if there is and API error.
-!["Screenshot description"](URL)
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Error%20Handling.png?raw=true)
 
 ### Mobile Friendly Design
 
-!["Screenshot description"](URL)
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Mobile%20Display.png?raw=true)
 
 ### Transition States
 
 Animated transitions for saving and deleting.
-!["Screenshot description"](URL)
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Transition%20Animation.png?raw=true)
 
 ## How to Get started
 
