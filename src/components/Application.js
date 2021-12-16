@@ -5,8 +5,7 @@ import Appointment from "components/Appointment"
 import useApplicationData from 'hooks/useApplicationData';
 import { getAppointmentsForDay, getInterview, getInterviewersForDay } from "helpers/selectors"
 
-export default function Application(props) {
-  
+export default function Application(props) { 
   const {
     state,
     setDay,
@@ -14,9 +13,7 @@ export default function Application(props) {
     deleteInterview
   } = useApplicationData()
 
-  
   const getInterviewers = getInterviewersForDay(state, state.day);
-  
   const dailyAppointments = getAppointmentsForDay(state, state.day);
   
   const schedule = dailyAppointments.map((app) => {
@@ -31,7 +28,7 @@ export default function Application(props) {
         bookInterview={bookInterview}
         deleteInterview={deleteInterview}
       />)
-  } )
+});
 
   return (
     <main className="layout">

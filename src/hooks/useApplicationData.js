@@ -2,18 +2,19 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function useVisualMode(initial) {
-
   const setDay = day => setState({ ...state, day });
-  const daysURL = '/api/days';
-  const appointmentURL = '/api/appointments';
-  const interviewersURL = '/api/interviewers';
-
   const [state, setState] = useState({
     day: "Monday",
     days: [],
     appointments: {},
     interviewers: {}
   });
+
+  const daysURL = '/api/days';
+  const appointmentURL = '/api/appointments';
+  const interviewersURL = '/api/interviewers';
+
+
   function updateSpots(id, isDeleting) {
     let days = [...state.days];
     let dayToChange = days.find(day => day.appointments.includes(id));
@@ -26,36 +27,30 @@ export default function useVisualMode(initial) {
       dayToChange.spots -= 1;
     }
     days[indexToUpdate] = dayToChange;
-    return days
+
+    return days;
   }
   
   
   function bookInterview(id, interview) {
-    
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview }
     };
-    
     const appointments = {
       ...state.appointments,
       [id]: appointment
     };
-     
-   
     return axios.put(`/api/appointments/${id}`, {interview})
       .then(() => {
          //days variable holds the new days array with spot incremented
         let days = updateSpots(id, false)
         setState({ ...state, appointments, days })
-        
-
-    })
-    
-    
+      })   
   }
-  function deleteInterview(id) {
 
+
+  function deleteInterview(id) {
     const appointment = {
       ...state.appointments[id],
       interview: null
@@ -83,5 +78,6 @@ export default function useVisualMode(initial) {
     })
       
   }, []);
+  
   return {state, setDay, bookInterview, deleteInterview }
 }
