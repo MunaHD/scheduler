@@ -1,8 +1,68 @@
 # Interview Scheduler
 
+This is a SPA hat was built using the React Javascript library. This application allows the user to save, edit and delete appointment Monday to Friday. The application displays the appointments one day at a time and the side panel shows the available spots for individual days. The daily display allows the user to create up to 5 appointments per day between 12pm - 5pm. The data is stored in an API and retirieved with axios.
+
+## Final Product
+
+### Landing Page
+
+The page displays individual days with 5 slots to book appointments.
+!["Screenshot description"](URL)
+
+### Create an Appointment
+
+The form to create/ edit an appointment.
+!["Screenshot description"](URL)
+
+### Warnings
+
+Shows an error if the user leaves the name feild empty.
+!["Screenshot description"](URL)
+
+### Confirmation on Delete
+
+warning to user when deleting.
+!["Screenshot description"](URL)
+
+### Error Handling
+
+Error displayed if there is and API error.
+!["Screenshot description"](URL)
+
+### Mobile Friendly Design
+
+!["Screenshot description"](URL)
+
+### Transition States
+
+Animated transitions for saving and deleting.
+!["Screenshot description"](URL)
+
+## How to Get started
+
+1. Fork this repository, then clone it.
+2. Install the dependencies using the npm install command.
+3. Start the Webpack Development Server using npm start. The app will be served at http://localhost:8000/.
+4. Go to http://localhost:8000/ in your browser.
+5. Enjoy the full features of the website!
+
+## Dependencies
+
+- axios ^0.24.0
+- classnames ^2.2.6
+- normalize.css ^8.0.1
+- react ^16.9.0
+- react-dom ^16.9.0
+- react-hooks-testing-library ^7.0.2
+- react-scripts 3.0.0
+
 ## Setup
 
-Install dependencies with `npm install`.
+Install dependencies with
+
+```
+npm install
+```
 
 ## Running Webpack Development Server
 
