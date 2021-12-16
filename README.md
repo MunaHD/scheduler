@@ -14,11 +14,6 @@ The page displays individual days with 5 slots to book appointments.
 The form to create/ edit an appointment.
 !["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Create:Edit%20Form.png?raw=true)
 
-### Warnings
-
-Shows an error if the user leaves the name feild empty.
-!["Screenshot description"](URL)
-
 ### Confirmation on Delete
 
 warning to user when deleting.
@@ -28,6 +23,11 @@ warning to user when deleting.
 
 Error displayed if there is and API error.
 !["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Error%20Handling.png?raw=true)
+
+### Warnings
+
+Shows an error if the user leaves the name feild empty.
+!["Screenshot description"](https://github.com/MunaHD/scheduler/blob/master/docs/Warning%20Field.png?raw=true)
 
 ### Mobile Friendly Design
 
