@@ -4,9 +4,9 @@ import axios from 'axios';
 export default function useVisualMode(initial) {
 
   const setDay = day => setState({ ...state, day });
-  const daysURL = 'api/days';
-  const appointmentURL = 'api/appointments';
-  const interviewersURL = 'api/interviewers';
+  const daysURL = '/api/days';
+  const appointmentURL = '/api/appointments';
+  const interviewersURL = '/api/interviewers';
 
   const [state, setState] = useState({
     day: "Monday",
@@ -43,7 +43,7 @@ export default function useVisualMode(initial) {
     };
      
    
-    return axios.put(`api/appointments/${id}`, {interview})
+    return axios.put(`/api/appointments/${id}`, {interview})
       .then(() => {
          //days variable holds the new days array with spot incremented
         let days = updateSpots(id, false)
